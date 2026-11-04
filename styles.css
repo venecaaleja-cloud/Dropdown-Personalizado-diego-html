@@ -1,0 +1,108 @@
+/* Estilos generales para centrar en la página */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+    background-color: #f9f9f9;
+}
+
+/* Contenedor principal */
+.contenedor-desplegable {
+    position: relative;
+    width: 250px;
+    user-select: none; /* Evita seleccionar texto al hacer clic rápido */
+}
+
+/* Botón principal (Estado por defecto y seleccionado) */
+.boton-desplegable {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: white;
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Flecha del botón */
+.flecha {
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+/* Cuando el menú está abierto, rotamos la flecha */
+.contenedor-desplegable.abierto .flecha {
+    transform: rotate(180deg);
+}
+
+/* Menú desplegable (Oculto por defecto) */
+.menu-desplegable {
+    position: absolute;
+    top: 100%; /* Justo debajo del botón */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #000;
+    border-radius: 12px;
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    display: none; /* Oculto por defecto */
+    z-index: 10;
+    overflow: hidden; /* Para que los bordes redondeados corten bien */
+}
+
+/* Estado Abierto: Mostramos el menú */
+.contenedor-desplegable.abierto .menu-desplegable {
+    display: block;
+}
+
+/* Elementos de la lista */
+.elemento-lista {
+    padding: 12px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #000;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+/* Quitamos el borde al último elemento */
+.elemento-lista:last-child {
+    border-bottom: none;
+}
+
+/* Hover en los elementos */
+.elemento-lista:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estado Seleccionado (Elemento resaltado con el check) */
+.elemento-lista.seleccionado {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+/* Añadimos el icono de check (✓) al elemento seleccionado usando CSS */
+.elemento-lista.seleccionado::after {
+    content: '✔';
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
